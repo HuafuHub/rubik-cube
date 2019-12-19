@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3D照片墙</title>
+  <style>
+    :root {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      perspective: 2000px;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes roundBox {
+      0% {
+        transform: translate(-50%, -50%) rotateY(0deg);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) rotateY(360deg);
+      }
+    }
+
+    .box {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transform-style: preserve-3d;
+      animation: roundBox 16s cubic-bezier(0, 0, 1, 1) infinite alternate;
+    }
+    .box img {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 300px;
+      height: 300px;
+      border: 1px solid;
+      border-radius: 50%;
+      transform-style: preserve-3d;
+    }
+
+    .box img:nth-of-type(1) {
+      transform: rotateY(0deg) translateZ(450px);
+    }
+
+    .box img:nth-of-type(2) {
+      transform: rotateY(40deg) translateZ(450px);
+    }
+
+    .box img:nth-of-type(3) {
+      transform: rotateY(80deg) translateZ(450px);
+    }
+
+    .box img:nth-of-type(4) {
+      transform: rotateY(120deg) translateZ(450px);
+    }
+
+    .box img:nth-of-type(5) {
+      transform: rotateY(160deg) translateZ(450px);
+    }
+
+    .box img:nth-of-type(6) {
+      transform: rotateY(200deg) translateZ(450px);
+    }
+
+    .box img:nth-of-type(7) {
+      transform: rotateY(-120deg) translateZ(450px);
+    }
+
+    .box img:nth-of-type(8) {
+      transform: rotateY(-80deg) translateZ(450px);
+    }
+
+    .box img:nth-of-type(9) {
+      transform: rotateY(-40deg) translateZ(450px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <img src="images/0.jpg" alt="">
+    <img src="images/1.jpg" alt="">
+    <img src="images/2.jpg" alt="">
+    <img src="images/3.jpg" alt="">
+    <img src="images/4.jpg" alt="">
+    <img src="images/5.jpg" alt="">
+    <img src="images/6.jpg" alt="">
+    <img src="images/7.jpg" alt="">
+    <img src="images/8.jpg" alt="">
+  </div>
+
+  <script>
+    document.onmouseenter = function () {
+      document.body.onmousemove = function (e) {
+        document.body.style.perspectiveOrigin = `${e.pageX}px ${e.pageY}px`;
+      }
+      document.onmouseleave = function(){
+        document.body.onmousemove = null;
+        document.body.style.perspectiveOrigin = `center center`;
+      }
+    }
+  </script>
+</body>
+
+</html>
